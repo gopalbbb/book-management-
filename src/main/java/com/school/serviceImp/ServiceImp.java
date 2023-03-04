@@ -15,13 +15,14 @@ import com.school.bookReposeroty.BookRepository;
 import com.school.bookService.BookService;
 
 @Service
-public class ServiceImp implements BookService {
+public class BookServiceImpl implements BookService {
+
 	@Autowired
 	private BookRepository bookRepository;
 	
-	
 	@Autowired
 	private ModelMapper modelMapper;
+
 
 	@Override
 	public List<BookDto> getAllBook(BookDto bookDto) {
@@ -52,17 +53,15 @@ public class ServiceImp implements BookService {
 		
 		
 	
+
 	
-	public Book addNewbook(BookDto bookDto) {
-		Book book=new Book();
-		book.setBookName(bookDto.getBookName());
-		book.setAuthorId(bookDto.getAuthorId());
-		book.setAuthorName(bookDto.getAuthorName());
-		return bookRepository.save(book);
-		 
-		
+	@Override
+	public BookDto createBook(BookDto bookDto) {
+		Book book = this.dtoToBook(bookDto);
+		Book savedBook = this.bookRepository.save(book);
+		return this.bookToDto(savedBook);
 	}
-	
+
 	public Book dtoToBook(BookDto bookDto) 
 	{
 		Book book = this.modelMapper.map(bookDto, Book.class);
@@ -73,6 +72,7 @@ public class ServiceImp implements BookService {
 	public BookDto  bookToDto(Book book){
 		BookDto bookDto = this.modelMapper.map(book, BookDto.class);
 		return bookDto;
+
 		}
 
 	@Override
@@ -80,7 +80,9 @@ public class ServiceImp implements BookService {
 			Book book=this.dtoTOBook(bookDto);
 			Book book2=this.bookRepository.save(book);
 			return this.bookToBookDto(book2);
+
 		}
-	}
 
 
+
+}
