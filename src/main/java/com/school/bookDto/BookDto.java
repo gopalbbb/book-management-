@@ -9,58 +9,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 @NoArgsConstructor
+@Data
 @Getter
 @Setter
-@Data
+public class BookDto implements Serializable{
+	
+	private static final long serialVersionUID = -6636101227417116139L;
 
-public class BookDto implements Serializable {
-	
-	private static final long serialVersionUID = 3387934401753858061L;
-	
-	
-	private Long bookId;
+
+	private long bookId;
+
 	private String bookName;
+	
+
 	private String authorName;
-	private Integer authorId;
-	private String aboutbook;
-
 	
 	
+	private String authorId;
 	
-	public Long getBookId() {
-		return bookId;
-	}
-	public void setBookId(Long bookId) {
-		this.bookId = bookId;
-	}
-	public String getBookName() {
-		return bookName;
-	}
-	public void setBookName(String bookName) {
-		this.bookName = bookName;
-	}
-	public String getAuthorName() {
-		return authorName;
-	}
-	public void setAuthorName(String authorName) {
-		this.authorName = authorName;
-	}
-	public Integer getAuthorId() {
-		return authorId;
-	}
-	public void setAuthorId(Integer authorId) {
-		this.authorId = authorId;
-	}
-	public String getAboutbook() {
-		return aboutbook;
-	}
-	public void setAboutbook(String aboutbook) {
-		this.aboutbook = aboutbook;
-	}
-	
-	
-	
-
-	
-	
+	private String aboutBook;
 }
