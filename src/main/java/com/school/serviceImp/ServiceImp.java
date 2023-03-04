@@ -49,20 +49,6 @@ public class ServiceImp implements BookService {
 		return null;
 	}
 
-
-	/*
-	 * public BookDto createBook(BookDto bookDto) { Book
-	 * book=this.dtoTOBook(bookDto); Book book2=this.bookRepository.save(book);
-	 * return this.bookToBookDto(book2); }
-	 */
-		
-	/*
-	 * Book book = this.modelMapper.map(bookDto, Book.class );
-	 * 
-	 * Book savedBook = this.bookRepository.save(book);
-	 * 
-	 * return this.modelMapper.map(savedBook, BookDto.class); }
-	 */
 		
 		
 	
@@ -77,15 +63,17 @@ public class ServiceImp implements BookService {
 		
 	}
 	
-	public Book dtoTOBook(BookDto bookDto) {
-		Book book=this.modelMapper.map(bookDto, Book.class);
+	public Book dtoToBook(BookDto bookDto) 
+	{
+		Book book = this.modelMapper.map(bookDto, Book.class);
 		return book;
+		
 	}
 	
-	public BookDto bookToBookDto(Book book) {
-		BookDto bookDto=this.modelMapper.map(book, BookDto.class);
+	public BookDto  bookToDto(Book book){
+		BookDto bookDto = this.modelMapper.map(book, BookDto.class);
 		return bookDto;
-	}
+		}
 
 	@Override
 	public BookDto createBook(BookDto bookDto) {
